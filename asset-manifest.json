@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.js": "/expo-gh-pages/static/js/main.02c3b6bf.js",
+    "static/js/977.21676b40.js": "/expo-gh-pages/static/js/977.21676b40.js",
+    "static/media/Fontisto.ttf": "/expo-gh-pages/static/media/Fontisto.c0edd68811e0237502fe.ttf",
+    "static/media/Feather.ttf": "/expo-gh-pages/static/media/Feather.0f5d9cede2e831f3fc80.ttf",
+    "favicon.ico": "/expo-gh-pages/favicon.ico",
+    "index.html": "/expo-gh-pages/index.html",
+    "favicon-32.png": "/expo-gh-pages/favicon-32.png",
+    "favicon-16.png": "/expo-gh-pages/favicon-16.png",
+    "manifest.json": "/expo-gh-pages/manifest.json",
+    "serve.json": "/expo-gh-pages/serve.json",
+    "main.02c3b6bf.js.map": "/expo-gh-pages/static/js/main.02c3b6bf.js.map",
+    "977.21676b40.js.map": "/expo-gh-pages/static/js/977.21676b40.js.map"
+  },
+  "entrypoints": [
+    "static/js/977.21676b40.js",
+    "static/js/main.02c3b6bf.js"
+  ]
+}
