@@ -9,6 +9,7 @@ import {
   TextInput,
   ScrollView,
   Alert,
+  Platform,
 } from "react-native";
 import { theme } from "./colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -67,19 +68,29 @@ export default function App() {
     }
   };
   const deleteToDo = async (key) => {
-    Alert.alert("Delete To Do", "Are you sure?", [
-      { text: "Cancel" },
-      {
-        text: "I'm Sure",
-        style: "destructive",
-        onPress: () => {
-          const newToDos = { ...toDos };
-          delete newToDos[key];
-          setToDos(newToDos);
-          saveToDos(newToDos);
+    if (Platform.OS === "web") {
+      const ok = confirm("Do you want to delete this To Do?");
+      if (ok) {
+        const newToDos = { ...toDos };
+        delete newToDos[key];
+        setToDos(newToDos);
+        saveToDos(newToDos);
+      }
+    } else {
+      Alert.alert("Delete To Do", "Are you sure?", [
+        { text: "Cancel" },
+        {
+          text: "I'm Sure",
+          style: "destructive",
+          onPress: () => {
+            const newToDos = { ...toDos };
+            delete newToDos[key];
+            setToDos(newToDos);
+            saveToDos(newToDos);
+          },
         },
-      },
-    ]);
+      ]);
+    }
   };
   const completeToDo = (key) => {
     const newToDo = { ...toDos };
@@ -93,27 +104,45 @@ export default function App() {
     setToDos(newToDo);
   };
   const editToDo = async (key) => {
-    Alert.alert("Edit To Do", "Are you sure?", [
-      {
-        text: "Cancel",
-        onPress: () => {
-          const newToDo = { ...toDos };
-          newToDo[key].edit = false;
-          setToDos(newToDo);
-          saveToDos(newToDo);
+    if (Platform.OS === "web") {
+      const ok = confirm("Do you want to edit this To Do?");
+      if (ok) {
+        const newToDo = { ...toDos };
+        newToDo[key].edit = false;
+        newToDo[key].text = newToDo[key].editText;
+        setToDos(newToDo);
+        saveToDos(newToDo);
+      } else {
+        const newToDo = { ...toDos };
+        newToDo[key].editText = newToDo[key].text;
+        newToDo[key].edit = false;
+        setToDos(newToDo);
+        saveToDos(newToDo);
+      }
+    } else {
+      Alert.alert("Edit To Do", "Are you sure?", [
+        {
+          text: "Cancel",
+          onPress: () => {
+            const newToDo = { ...toDos };
+            newToDo[key].editText = newToDo[key].text;
+            newToDo[key].edit = false;
+            setToDos(newToDo);
+            saveToDos(newToDo);
+          },
         },
-      },
-      {
-        text: "I'm Sure",
-        onPress: () => {
-          const newToDo = { ...toDos };
-          newToDo[key].edit = false;
-          newToDo[key].text = newToDo[key].editText;
-          setToDos(newToDo);
-          saveToDos(newToDo);
+        {
+          text: "I'm Sure",
+          onPress: () => {
+            const newToDo = { ...toDos };
+            newToDo[key].edit = false;
+            newToDo[key].text = newToDo[key].editText;
+            setToDos(newToDo);
+            saveToDos(newToDo);
+          },
         },
-      },
-    ]);
+      ]);
+    }
   };
   const onChangeEditText = (text, key) => {
     const newToDo = { ...toDos };
@@ -127,7 +156,12 @@ export default function App() {
       <View style={styles.header}>
         <TouchableOpacity onPress={work}>
           <Text
-            style={{ ...styles.btnText, color: working ? "white" : theme.grey }}
+            style={{
+              fontSize: 38,
+              fontWeight: "600",
+              color: "white",
+              color: working ? "white" : theme.grey,
+            }}
           >
             Work
           </Text>
@@ -135,7 +169,9 @@ export default function App() {
         <TouchableOpacity onPress={travel}>
           <Text
             style={{
-              ...styles.btnText,
+              fontSize: 38,
+              fontWeight: "600",
+              color: "white",
               color: !working ? "white" : theme.grey,
             }}
           >
@@ -224,11 +260,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     marginTop: 100,
   },
-  btnText: {
-    fontSize: 38,
-    fontWeight: "600",
-    color: "white",
-  },
+
   input: {
     backgroundColor: "white",
     paddingVertical: 15,
