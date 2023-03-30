@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.js": "/WorkHardTravelHardApp/static/js/main.8c6587f9.js",
+    "main.js": "/WorkHardTravelHardApp/static/js/main.8cbfeaf1.js",
     "static/js/977.21676b40.js": "/WorkHardTravelHardApp/static/js/977.21676b40.js",
     "static/media/Fontisto.ttf": "/WorkHardTravelHardApp/static/media/Fontisto.c0edd68811e0237502fe.ttf",
     "static/media/Feather.ttf": "/WorkHardTravelHardApp/static/media/Feather.0f5d9cede2e831f3fc80.ttf",
@@ -10,11 +10,11 @@
     "favicon-16.png": "/WorkHardTravelHardApp/favicon-16.png",
     "manifest.json": "/WorkHardTravelHardApp/manifest.json",
     "serve.json": "/WorkHardTravelHardApp/serve.json",
-    "main.8c6587f9.js.map": "/WorkHardTravelHardApp/static/js/main.8c6587f9.js.map",
+    "main.8cbfeaf1.js.map": "/WorkHardTravelHardApp/static/js/main.8cbfeaf1.js.map",
     "977.21676b40.js.map": "/WorkHardTravelHardApp/static/js/977.21676b40.js.map"
   },
   "entrypoints": [
     "static/js/977.21676b40.js",
-    "static/js/main.8c6587f9.js"
+    "static/js/main.8cbfeaf1.js"
   ]
 }
